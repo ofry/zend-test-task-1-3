@@ -12,5 +12,10 @@
  */
 
 return [
-    // ...
+    'db' => [
+        'driver'   => 'Mysqli',
+        'database' => 'zend_test_task_db',
+        'host'     => '127.0.0.1',
+        'port'     => '3306',
+    ],
 ];
