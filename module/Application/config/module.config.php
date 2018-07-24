@@ -47,12 +47,22 @@ return [
     ],
     'router'          => [
         'routes' => [
-            'home' => [
+            'home'        => [
                 'type' => Literal::class,
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'restful'     => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/api',
+                    'defaults' => [
+                        'controller' => Controller\RestfulController::class,
                         'action'     => 'index',
                     ],
                 ],
