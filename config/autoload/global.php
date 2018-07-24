@@ -11,11 +11,45 @@
  * file.
  */
 
-return [
-    'db' => [
+    use Doctrine\Common\Persistence\Mapping\Driver as MappingDriver;
+    use Doctrine\DBAL\Driver\Mysqli\Driver as MysqliDriver;
+
+    return [
+        'db'       => [
         'driver'   => 'Mysqli',
-        'database' => 'zend_test_task_db',
-        'host'     => '127.0.0.1',
-        'port'     => '3306',
     ],
+        'doctrine' => [
+            'connection'    => [
+                'orm_default' => [
+                    'driverClass' => MysqliDriver::class,
+                    'params'      => [
+                        'doctrine_type_mappings' => [
+                            'enumresult' => 'enumresult',
+                        ],
+                    ],
+                ],
+            ],
+            'configuration' => [
+                'orm_default' => [
+                    'driver' => 'orm_default_chain',
+                    'types'  => [
+                        'enumresult' => Application\Model\Entity\Types\EnumResultType::class,
+                    ],
+                ],
+            ],
+            'driver'        => [
+                'orm_default_static_php' => [
+                    'class' => MappingDriver\StaticPHPDriver::class,
+                    'paths' => [
+                        __DIR__ . '../../module/Application/src/Model/Entity',
+                    ],
+                ],
+                'orm_default_chain'      => [
+                    'class'   => MappingDriver\MappingDriverChain::class,
+                    'drivers' => [
+                        'Application\Model\Entity' => 'orm_default_static_php',
+                    ],
+                ],
+            ],
+        ],
 ];
