@@ -77,8 +77,8 @@
                     $entry->setStartTime(random_int(0, 2147483647));
                     $entry->setEndTime(random_int(0, 2147483647));
                     $entry->setResult(Entity\Types\EnumResultType::VALUES[random_int(
-                        0, count(Entity\Types\EnumResultType::VALUES)
-                    ) - 1]);
+                        0, count(Entity\Types\EnumResultType::VALUES) - 1
+                    )]);
                     $this->db->persist($entry);
                     $this->db->flush();
                 }

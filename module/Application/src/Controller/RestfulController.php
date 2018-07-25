@@ -11,6 +11,7 @@
     use Application\Model\TestTable;
     use Zend\Hydrator\ClassMethods;
     use Zend\Mvc\Controller\AbstractRestfulController;
+    use Zend\View\Model\JsonModel;
 
     class RestfulController extends AbstractRestfulController
     {

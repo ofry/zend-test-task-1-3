@@ -21,11 +21,9 @@
         'doctrine' => [
             'connection'    => [
                 'orm_default' => [
-                    'driverClass' => MysqliDriver::class,
-                    'params'      => [
-                        'doctrine_type_mappings' => [
-                            'enumresult' => 'enumresult',
-                        ],
+                    'driverClass'            => MysqliDriver::class,
+                    'doctrine_type_mappings' => [
+                        'enum' => 'string',
                     ],
                 ],
             ],

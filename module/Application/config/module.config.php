@@ -7,6 +7,7 @@
 
 namespace Application;
 
+use Application\Model\TestTable;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -48,7 +49,7 @@ return [
     'router'          => [
         'routes' => [
             'home'        => [
-                'type' => Literal::class,
+                'type'    => Literal::class,
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
@@ -82,7 +83,7 @@ return [
     'controllers'     => [
         'factories' => [
             Controller\IndexController::class   => InvokableFactory::class,
-            Controller\RestfulController::class => Factory\DbFactory::class,
+            Controller\RestfulController::class => Factory\RestfulControllerFactory::class,
         ],
     ],
     'view_manager'    => [
@@ -107,6 +108,12 @@ return [
     'service_manager' => [
         'abstract_factories' => [
             \Zend\Log\LoggerAbstractServiceFactory::class,
+        ],
+        'factories'          => [
+            TestTable::class => Factory\DbFactory::class,
+        ],
+        'aliases'            => [
+            Factory\DbFactory::class => TestTable::class,
         ],
     ],
 ];
