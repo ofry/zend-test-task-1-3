@@ -17,11 +17,11 @@
     class EnumResultType extends EnumType
     {
         /**
-         *
+         * Название типа для doctrine
          */
         const NAME = 'enumresult';
         /**
-         *
+         * Возможные значения
          */
         const VALUES = array('normal', 'illegal', 'failed', 'success');
         /**
@@ -29,7 +29,7 @@
          */
         protected $name = self::NAME;
         /**
-         * @var array
+         * @var string[]
          */
         protected $values = self::VALUES;
     }

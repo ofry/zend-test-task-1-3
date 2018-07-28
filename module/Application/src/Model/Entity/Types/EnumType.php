@@ -15,6 +15,8 @@
     /**
      * Class EnumType
      *
+     * Описывает тип ENUM
+     *
      * @package Application\Model\Entity\Types
      */
     abstract class EnumType extends Type
@@ -24,7 +26,7 @@
          */
         protected $name;
         /**
-         * @var array
+         * @var string[]
          */
         protected $values = array();
 
@@ -55,10 +57,10 @@
         }
 
         /**
-         * @param mixed                                     $value
+         * @param string                                    $value
          * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
          *
-         * @return mixed
+         * @return string
          */
         public function convertToDatabaseValue($value, AbstractPlatform $platform)
         {

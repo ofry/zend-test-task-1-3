@@ -13,19 +13,39 @@
     use Zend\Mvc\Controller\AbstractRestfulController;
     use Zend\View\Model\JsonModel;
 
+    /**
+     * Class RestfulController
+     *
+     * @package Application\Controller
+     */
     class RestfulController extends AbstractRestfulController
     {
+        /**
+         * @var \Application\Model\TestTable
+         */
         private $table;
+        /**
+         * @var \Zend\Hydrator\ClassMethods
+         */
         private $hydrator;
 
+        /**
+         * RestfulController constructor.
+         *
+         * @param \Application\Model\TestTable $table
+         */
         public function __construct(TestTable $table)
         {
             $this->table = $table;
             $this->hydrator = new ClassMethods();
         }
 
+        /**
+         * @return \Zend\View\Model\JsonModel
+         */
         public function indexAction()
         {
+            /** @var array $entries */
             $entries = $this->table->get();
             $result = array();
             foreach ($entries as $entry) {

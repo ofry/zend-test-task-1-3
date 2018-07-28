@@ -15,38 +15,45 @@
     /**
      * Class TestItem
      *
+     * Класс описывает запись в таблице базы данных.
+     *
      * @package Application\Model\Entity
      */
     class TestItem
     {
         /**
-         *
+         * Имя таблицы в БД
          */
         const TABLE = 'name';
 
         /**
-         * @var
+         * @var integer
          */
         private $id;
         /**
-         * @var
+         * @var string
          */
         private $script_name;
         /**
-         * @var
+         * @var integer
          */
         private $start_time;
         /**
-         * @var
+         * @var integer
          */
         private $end_time;
         /**
-         * @var
+         * @var string
          */
         private $result;
 
         /**
+         *
+         * Описывает метаданные полей таблицы для Doctrine
+         *
          * @param \Doctrine\ORM\Mapping\ClassMetadata $metadata
+         *
+         * @return void
          */
         public static function loadMetadata(ClassMetadata $metadata)
         {
@@ -65,7 +72,7 @@
         }
 
         /**
-         * @return mixed
+         * @return integer|null
          */
         public function getId()
         {
@@ -73,7 +80,7 @@
         }
 
         /**
-         * @return mixed
+         * @return string|null
          */
         public function getScriptName()
         {
@@ -81,7 +88,7 @@
         }
 
         /**
-         * @param mixed $script_name
+         * @param string $script_name
          */
         public function setScriptName($script_name)
         {
@@ -89,7 +96,7 @@
         }
 
         /**
-         * @return mixed
+         * @return integer
          */
         public function getStartTime()
         {
@@ -105,7 +112,7 @@
         }
 
         /**
-         * @return mixed
+         * @return integer
          */
         public function getEndTime()
         {
@@ -121,7 +128,7 @@
         }
 
         /**
-         * @return mixed
+         * @return string
          */
         public function getResult()
         {
@@ -129,7 +136,7 @@
         }
 
         /**
-         * @param mixed $result
+         * @param string $result
          */
         public function setResult($result)
         {

@@ -25,7 +25,7 @@
          */
         private $db;
         /**
-         * @var \Zend\Log\Logger
+         * @var \Zend\Log\Logger                Библиотека для перехвата исключений и ошибок PHP
          */
         private $logger;
 
@@ -46,11 +46,18 @@
         }
 
         /**
+         *  Создает таблицу в базе данных на основе класса Entity\TestItem
          *
+         * @return void
          */
         private function create()
         {
+            /** @var \Doctrine\ORM\Tools\SchemaTool $tool Объект для операций CREATE и DROP */
             $tool = new SchemaTool($this->db);
+
+            /**
+             * @var \Doctrine\ORM\Mapping\ClassMetadata[] $classes Данные, на основе которых будут созданы таблицы
+             */
             $classes = array(
                 $this->db->getClassMetadata(Entity\TestItem::class),
             );
@@ -65,13 +72,20 @@
         }
 
         /**
+         *  Заполняет таблицу случайными данными
          *
+         * @return void
          */
         private function fill()
         {
             try {
+                /** @var int $quantity Количество генерируемых записей */
                 $quantity = random_int(1, 2000);
+
+                /** @var int $count Счетчик */
                 for ($count = 0; $count < $quantity; $count++) {
+
+                    /** @var Entity\TestItem $entry Создаваемая запись */
                     $entry = new Entity\TestItem();
                     $entry->setScriptName(bin2hex(random_bytes(10)));
                     $entry->setStartTime(random_int(0, 2147483647));
@@ -91,10 +105,13 @@
         }
 
         /**
+         * Возвращает данные из таблицы по критерию
          *
+         * @return array
          */
         public function get()
         {
+            /** @var string[] $values Параметр для отбора */
             $values = array('normal', 'success');
             $entries = $this->db->getRepository(Entity\TestItem::class)
                 ->findBy(array('result' => $values));

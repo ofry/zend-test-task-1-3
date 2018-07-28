@@ -11,8 +11,22 @@
     use Interop\Container\ContainerInterface;
     use Zend\ServiceManager\Factory\FactoryInterface;
 
+    /**
+     * Class RestfulControllerFactory
+     *
+     * Фабрика контроллеров
+     *
+     * @package Application\Factory
+     */
     class RestfulControllerFactory implements FactoryInterface
     {
+        /**
+         * @param \Interop\Container\ContainerInterface $container
+         * @param string                                $requestedName
+         * @param array|null                            $options
+         *
+         * @return object
+         */
         public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
         {
             return new $requestedName($container->get(DbFactory::class));
