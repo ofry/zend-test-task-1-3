@@ -6,11 +6,3 @@ data/cache/*
 phpunit.xml
 .idea/
 */.directory
-
-
-###> symfony/framework-bundle ###
-/.env
-/public/bundles/
-/var/
-/vendor/
-###< symfony/framework-bundle ###
